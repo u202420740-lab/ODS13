@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, interactive-widget=resizes-content">
+  <title>Chat de AtmosHero</title>
+  <link rel="stylesheet" href="css/chat.css">
+  <script src="js/chat.js" defer></script>
+</head>
+<body>
+  <div class="chat">
+    <button class="chat-boton" type="button" aria-label="Abrir chat de AtmosHero"
+      aria-haspopup="dialog" aria-controls="chat-panel" aria-expanded="false">
+      <span class="chat-icono" aria-hidden="true">•••</span>
+    </button>
+    <section id="chat-panel" class="chat-panel" role="dialog" aria-labelledby="chat-titulo" hidden>
+      <header class="chat-cabecera">
+        <h2 id="chat-titulo">Chat de AtmosHero</h2>
+        <button class="chat-cerrar" type="button" aria-label="Cerrar chat">×</button>
+      </header>
+      <div class="chat-contenido">
+        <p class="chat-saludo">¡Hola! Elige un tema o escribe tu pregunta.</p>
+        <div class="chat-temas" role="group" aria-label="Preguntas rápidas"></div>
+        <div class="chat-mensajes" role="log" aria-label="Conversación" aria-relevant="additions"></div>
+        <button class="chat-volver" type="button" hidden>Volver a preguntas rápidas</button>
+      </div>
+      <form class="chat-formulario">
+        <div class="chat-campo">
+          <label for="chat-pregunta">Tu pregunta</label>
+          <input id="chat-pregunta" type="text" maxlength="200" autocomplete="off" required>
+        </div>
+        <button type="submit">Enviar</button>
+      </form>
+    </section>
+
+  </div>
+</body>
+</html>

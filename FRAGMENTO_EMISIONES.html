@@ -1,0 +1,22 @@
+    <!-- Sección nueva: el proyecto original no contiene mediciones reales. -->
+    <section id="emisiones" class="seccion contenedor" aria-labelledby="titulo-emisiones">
+      <p class="etiqueta">ODS 13 · Lectura accesible</p>
+      <h2 id="titulo-emisiones">Emisiones por categoría</h2>
+      <p id="nota-emisiones" class="nota"><strong>Datos de demostración.</strong> Estos porcentajes ilustran la interacción; no son un historial real ni una estimación de tu huella.</p>
+      <div id="contenedor-grafico-emisiones">
+        <button id="btn-modo-inclusivo" class="boton" type="button" aria-pressed="false" aria-controls="grafico-emisiones leyenda-emisiones" hidden>
+          <span class="texto-btn">Modo Inclusivo (patrones)</span>
+          <span id="estado-modo" aria-hidden="true">: desactivado</span>
+        </button>
+        <p id="estado-emisiones" role="status">Colores, iconos y porcentajes. Los patrones están desactivados.</p>
+        <figure aria-labelledby="titulo-emisiones" aria-describedby="nota-emisiones">
+          <!-- El gráfico es decorativo para lectores de pantalla: la lista contiene los mismos datos. -->
+          <div id="grafico-emisiones" aria-hidden="true"></div>
+          <figcaption>Distribución porcentual de ejemplo. Cada barra se mide de 0 a 100 %.</figcaption>
+        </figure>
+        <h3>Leyenda y datos</h3>
+        <ul id="leyenda-emisiones" class="leyenda-emisiones"></ul>
+        <noscript>Activa JavaScript para ver la demostración interactiva y sus datos.</noscript>
+      </div>
+    </section>
+
