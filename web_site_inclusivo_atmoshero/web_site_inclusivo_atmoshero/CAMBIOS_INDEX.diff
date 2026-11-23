@@ -1,0 +1,140 @@
+--- original/index.html
++++ web_site/index.html
+@@ -20,6 +20,9 @@
+ 
+   <link rel="icon" type="image/svg+xml" href="iconos/logo.svg">
+ 
++  <link rel="stylesheet" href="css/accesibilidad.css">
++  <script src="js/menu.js" defer></script>
++  <script src="js/grafico-emisiones.js" defer></script>
+ </head>
+ 
+ 
+@@ -32,29 +35,32 @@
+ 
+     <div class="contenedor barra">
+ 
+-      <a class="marca" href="index.html"><img src="iconos/logo.svg" alt="" width="150" height="150">AtmosHero</a>
+-
+-      <nav aria-label="Navegación principal">
++      <a class="marca" href="#inicio"><img src="iconos/logo.svg" alt="" width="150" height="150">AtmosHero</a>
++
++      <button id="boton-menu" class="hamburguesa" type="button" aria-controls="navegacion" aria-expanded="false" aria-label="Abrir menú" hidden>
++        <span aria-hidden="true">☰</span> <span id="texto-menu">Menú</span>
++      </button>
++      <nav id="navegacion" class="navegacion" aria-label="Navegación principal">
+ 
+         <ul class="menu">
+ 
+-          <li><a href="index.html#inicio">Inicio</a></li>
+-
+-          <li><a href="index.html#nosotros">Quiénes somos</a></li>
++          <li><a href="#inicio">Inicio</a></li>
++
++          <li><a href="#nosotros">Quiénes somos</a></li>
+ 
+           <li>
+ 
+-            <details class="desplegable">
++            <details id="resolver" class="desplegable">
+ 
+               <summary>Explorar</summary>
+ 
+               <ul class="submenu">
+ 
+-                <li><a href="index.html#servicios">Servicios</a></li>
+-
+-                <li><a href="index.html#orientador">Acciones ambientales</a></li>
+-
+-                <li><a href="index.html#contacto">Contáctanos</a></li>
++                <li><a href="#servicios">Servicios</a></li>
++
++                <li><a href="#orientador">Acciones ambientales</a></li>
++
++                <li><a href="#contacto">Contáctanos</a></li>
+ 
+               </ul>
+ 
+@@ -74,7 +80,7 @@
+ 
+   <main id="contenido">
+ 
+-    <section id="inicio" class="hero contenedor dos-columnas" aria-labelledby="titulo">
++    <section tabindex="-1" id="inicio" class="hero contenedor dos-columnas" aria-labelledby="titulo">
+ 
+       <div>
+ 
+@@ -102,7 +108,7 @@
+ 
+     </section>
+ 
+-    <section id="nosotros" class="seccion fondo">
++    <section tabindex="-1" id="nosotros" class="seccion fondo">
+ 
+       <div class="contenedor dos-columnas">
+ 
+@@ -135,7 +141,7 @@
+ 
+     </section>
+ 
+-    <section id="servicios" class="seccion contenedor">
++    <section tabindex="-1" id="servicios" class="seccion contenedor">
+ 
+       <p class="etiqueta">Un recorrido sencillo</p>
+ 
+@@ -174,7 +180,7 @@
+ 
+     </section>
+ 
+-    <section id="orientador" class="seccion fondo">
++    <section tabindex="-1" id="orientador" class="seccion fondo">
+ 
+       <div class="contenedor">
+ 
+@@ -244,6 +250,28 @@
+ 
+     </section>
+ 
++    <!-- Sección nueva: el proyecto original no contiene mediciones reales. -->
++    <section id="emisiones" class="seccion contenedor" aria-labelledby="titulo-emisiones">
++      <p class="etiqueta">ODS 13 · Lectura accesible</p>
++      <h2 id="titulo-emisiones">Emisiones por categoría</h2>
++      <p id="nota-emisiones" class="nota"><strong>Datos de demostración.</strong> Estos porcentajes ilustran la interacción; no son un historial real ni una estimación de tu huella.</p>
++      <div id="contenedor-grafico-emisiones">
++        <button id="btn-modo-inclusivo" class="boton" type="button" aria-pressed="false" aria-controls="grafico-emisiones leyenda-emisiones" hidden>
++          <span class="texto-btn">Modo Inclusivo (patrones)</span>
++          <span id="estado-modo" aria-hidden="true">: desactivado</span>
++        </button>
++        <p id="estado-emisiones" role="status">Colores, iconos y porcentajes. Los patrones están desactivados.</p>
++        <figure aria-labelledby="titulo-emisiones" aria-describedby="nota-emisiones">
++          <!-- El gráfico es decorativo para lectores de pantalla: la lista contiene los mismos datos. -->
++          <div id="grafico-emisiones" aria-hidden="true"></div>
++          <figcaption>Distribución porcentual de ejemplo. Cada barra se mide de 0 a 100 %.</figcaption>
++        </figure>
++        <h3>Leyenda y datos</h3>
++        <ul id="leyenda-emisiones" class="leyenda-emisiones"></ul>
++        <noscript>Activa JavaScript para ver la demostración interactiva y sus datos.</noscript>
++      </div>
++    </section>
++
+     <section id="proyectos" class="seccion contenedor">
+ 
+       <p class="etiqueta">Acción local</p>
+@@ -321,7 +349,7 @@
+ 
+     </section>
+ 
+-    <section id="contacto" class="seccion fondo">
++    <section tabindex="-1" id="contacto" class="seccion fondo">
+ 
+       <div class="contenedor dos-columnas">
+ 
+@@ -344,7 +372,7 @@
+ 
+         </div>
+ 
+-        <form action="confirmación.html" method="get" class="formulario">
++        <form action="confirmacion.html" method="get" class="formulario">
+ 
+           <label for="nombre">Nombre</label><input id="nombre" type="text" required maxlength="60"
+             placeholder="Ejemplo: Ana" autocomplete="off">

@@ -1,0 +1,256 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  overflow: hidden;
+  color: #26352d;
+  font-family: Arial, sans-serif;
+}
+
+h2 {
+  font-family: Georgia, serif;
+  font-weight: normal;
+  line-height: 1.2;
+}
+
+.chat {
+  --chat-margen: .75rem;
+  --chat-tamano-boton: 3.5rem;
+  position: fixed;
+  left: var(--chat-margen);
+  bottom: var(--chat-margen);
+  line-height: 1.45;
+}
+
+.chat button {
+  font: inherit;
+  cursor: pointer;
+}
+
+.chat-boton {
+  display: grid;
+  place-items: center;
+  width: var(--chat-tamano-boton);
+  height: var(--chat-tamano-boton);
+  padding: 0;
+  border: 2px solid white;
+  border-radius: 50%;
+  background: #174d32;
+  color: white;
+  box-shadow: 0 .25rem .85rem #26352d40;
+}
+
+.chat-boton:hover,
+.chat-formulario button:hover {
+  background: #26352d;
+}
+
+.chat-icono {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 1.75rem;
+  height: 1.25rem;
+  border-radius: .45rem;
+  background: white;
+  color: #174d32;
+  font-weight: bold;
+  line-height: 1;
+}
+
+.chat-icono::after {
+  position: absolute;
+  bottom: -.45rem;
+  left: .4rem;
+  width: 0;
+  height: 0;
+  border: .25rem solid transparent;
+  border-top-color: white;
+  border-left-color: white;
+  content: '';
+}
+
+.chat-panel {
+  position: absolute;
+  left: 0;
+  bottom: calc(var(--chat-tamano-boton) + .6rem);
+  display: grid;
+  grid-template-rows: auto minmax(0, 1fr) auto;
+  width: min(23rem, calc(100vw - 2 * var(--chat-margen)));
+  height: min(33rem, calc(100dvh - var(--chat-tamano-boton) - 2 * var(--chat-margen) - .6rem));
+  overflow: hidden;
+  border: 1px solid #658b72;
+  border-radius: 1rem;
+  background: #f7fbf6;
+  box-shadow: 0 .5rem 1.5rem #26352d40;
+}
+
+.chat-panel[hidden] {
+  display: none;
+}
+
+.chat-cabecera {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: .5rem;
+  padding: .2rem .5rem .2rem 1rem;
+  background: #174d32;
+  color: white;
+}
+
+.chat-cabecera h2 {
+  margin: 0;
+  font-size: 1.2rem;
+}
+
+.chat .chat-cerrar {
+  flex-shrink: 0;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  border: none;
+  border-radius: .4rem;
+  background: transparent;
+  color: inherit;
+  font-size: 1.65rem;
+  line-height: 1;
+}
+
+.chat-cerrar:hover {
+  background: #26352d;
+}
+
+.chat-contenido {
+  overflow: auto;
+  overscroll-behavior: contain;
+  padding: .75rem 1rem;
+}
+
+.chat-saludo {
+  margin: 0 0 .65rem;
+}
+
+.chat-temas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .4rem;
+}
+
+.chat-temas button {
+  min-height: 44px;
+  padding: .25rem .65rem;
+  border: 1px solid #658b72;
+  border-radius: .6rem;
+  background: white;
+  color: #174d32;
+  text-align: left;
+}
+
+.chat-temas button:hover {
+  background: #dae5bc;
+}
+
+.chat-mensajes {
+  display: grid;
+  gap: .5rem;
+}
+
+.chat-mensaje {
+  justify-self: start;
+  max-width: 100%;
+  padding: .6rem .75rem;
+  border-radius: .75rem;
+  background: #e7efd9;
+  overflow-wrap: anywhere;
+}
+
+.chat-mensaje:first-child {
+  margin-top: .8rem;
+}
+
+.chat-mensaje-usuario {
+  justify-self: end;
+  background: white;
+  border: 1px solid #cedfb7;
+}
+
+.chat-mensaje strong,
+.chat-formulario label {
+  font-size: .875rem;
+}
+
+.chat-mensaje p {
+  margin: .15rem 0 0;
+}
+
+.chat-mensaje a {
+  color: #174d32;
+  text-underline-offset: 4px;
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+}
+
+.chat-volver {
+  min-height: 44px;
+  margin-top: .4rem;
+  padding: .25rem .35rem;
+  border: none;
+  background: transparent;
+  color: #174d32;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+.chat-formulario {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: end;
+  gap: .5rem;
+  padding: .5rem .75rem .75rem;
+  border-top: 1px solid #cedfb7;
+  background: white;
+}
+
+.chat-formulario label {
+  display: block;
+  margin: 0 0 .2rem;
+}
+
+.chat-formulario input,
+.chat-formulario button {
+  min-height: 44px;
+  border: 1px solid #658b72;
+  border-radius: .5rem;
+}
+
+.chat-formulario input {
+  width: 100%;
+  padding: .4rem .55rem;
+  color: inherit;
+  font: inherit;
+  font-size: 1rem;
+}
+
+.chat-formulario button {
+  padding: .4rem .65rem;
+  background: #174d32;
+  color: white;
+}
+
+.chat :focus-visible {
+  outline: 3px solid #174d32;
+  outline-offset: 2px;
+}
+
+.chat .chat-cerrar:focus-visible {
+  outline-color: #f6d88a;
+}
+
+.chat .chat-boton:focus-visible {
+  outline-offset: 3px;
+}
+
